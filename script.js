@@ -24,7 +24,7 @@
   var savedTheme = localStorage.getItem('theme');
   if (savedTheme) document.documentElement.setAttribute('data-theme', savedTheme);
 
-n  function updateThemeIcon() {
+  function updateThemeIcon() {
     if (!themeToggle) return;
     var isLight = document.documentElement.getAttribute('data-theme') === 'light';
     themeToggle.innerHTML = isLight ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
@@ -89,7 +89,7 @@ n  function updateThemeIcon() {
   var sectionIds = ['hero', 'about', 'vision-mission', 'skills', 'services', 'experience', 'portfolio', 'testimonials', 'contact'];
   var navAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
 
-n  function setActiveNav() {
+  function setActiveNav() {
     var scrollY = window.scrollY + 120;
     var current = 'hero';
     sectionIds.forEach(function (id) {
