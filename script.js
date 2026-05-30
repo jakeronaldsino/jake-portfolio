@@ -1,5 +1,5 @@
 /**
- * Jake Ronald Sinon — Premium Portfolio
+ * Jake Ronald Sinon - Premium Portfolio
  */
 
 (function () {
@@ -233,7 +233,7 @@
       var email = document.getElementById('email').value.trim();
       var subject = document.getElementById('subject').value.trim();
       var message = document.getElementById('message').value.trim();
-      var body = encodeURIComponent(message + '\n\n— ' + name + ' (' + email + ')');
+      var body = encodeURIComponent(message + '\n\n- ' + name + ' (' + email + ')');
       window.location.href = 'mailto:jakeronaldsinon@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + body;
     });
   }
