@@ -1,4 +1,3 @@
- HEAD
 /**
  * Jake Ronald Sinon — Premium Portfolio
  */
@@ -96,71 +95,8 @@
     sectionIds.forEach(function (id) {
       var section = document.getElementById(id);
       if (section && scrollY >= section.offsetTop && scrollY < section.offsetTop + section.offsetHeight) {
-        current = id;
-      }
-    });
-    navAnchors.forEach(function (link) {
-      link.classList.toggle('is-active', link.getAttribute('href') === '#' + current);
-    });
-  }
-  window.addEventListener('scroll', setActiveNav, { passive: true });
-  setActiveNav();
-
-  // ========== Scroll reveal ==========
-  var revealEls = document.querySelectorAll('.reveal');
-  if ('IntersectionObserver' in window) {
-    var revealObs = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          revealObs.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-    revealEls.forEach(function (el) { revealObs.observe(el); });
-  } else {
-    revealEls.forEach(function (el) { el.classList.add('visible'); });
-  }
-
-  // ========== Animated counters ==========
-  function animateCounter(el, target, suffix) {
-    suffix = suffix || '';
-    var duration = 1800;
-    var start = 0;
-    var startTime = null;
-    function step(timestamp) {
-      if (!startTime) startTime = timestamp;
-      var progress = Math.min((timestamp - startTime) / duration, 1);
-      var value = Math.floor(progress * target);
-      el.textContent = value + suffix;
-      if (progress < 1) requestAnimationFrame(step);
-      else el.textContent = target + suffix;
-    }
-    requestAnimationFrame(step);
-  }
-
-  var counterEls = document.querySelectorAll('[data-count]');
-  if ('IntersectionObserver' in window) {
-    var counterObs = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          var el = entry.target;
-          var target = parseInt(el.getAttribute('data-count'), 10);
-          var suffix = el.getAttribute('data-suffix') || '';
-          animateCounter(el, target, suffix);
-          counterObs.unobserve(el);
-        }
-      });
-    }, { threshold: 0.5 });
-    counterEls.forEach(function (el) { counterObs.observe(el); });
-  }
-
-  // ========== Skill progress bars ==========
-  var skillCards = document.querySelectorAll('.skill-card');
-  if ('IntersectionObserver' in window) {
-    var skillObs = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
+        window.openModal = openModal;
+      })();
           var card = entry.target;
           var percent = card.getAttribute('data-percent') || '0';
           var fill = card.querySelector('.skill-fill');
