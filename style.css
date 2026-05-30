@@ -1,8 +1,7 @@
-<<<<<<< HEAD
 /* ============================================
-   Jake Ronald Sinon — Premium Portfolio
-   Dark Blue #0F172A · White #FFFFFF · Emerald #10B981
-   ============================================ */
+  Jake Ronald Sinon — Premium Portfolio
+  Dark Blue #0F172A · White #FFFFFF · Emerald #10B981
+  ============================================ */
 
 :root {
   --navy: #0F172A;
@@ -539,13 +538,6 @@ a { color: inherit; text-decoration: none; }
 .vision-card h3{margin-top:0.25rem;margin-bottom:0.5rem}
 .vision-card p{line-height:1.6;color:var(--text-muted)}
 
-=======
-/* ============================================
-   Jake Ronald Sinon — Premium Portfolio
-   Dark Blue #0F172A · White #FFFFFF · Emerald #10B981
-   ============================================ */
-
-:root {
   --navy: #0F172A;
   --navy-light: #1E293B;
   --navy-lighter: #334155;
