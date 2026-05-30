@@ -6,14 +6,22 @@
   'use strict';
 
   // ========== Loader ==========
-  window.addEventListener('load', function () {
+  function hideLoader() {
     var loader = document.getElementById('loader');
     if (loader) {
       setTimeout(function () {
         loader.classList.add('hidden');
       }, 600);
     }
-  });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', hideLoader);
+  } else {
+    hideLoader();
+  }
+  window.addEventListener('load', hideLoader);
+  setTimeout(hideLoader, 2500);
 
   // ========== Footer year ==========
   var yearEl = document.getElementById('year');
