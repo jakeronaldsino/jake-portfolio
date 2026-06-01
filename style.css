@@ -286,6 +286,120 @@ a { color: inherit; text-decoration: none; }
 }
 .about-learning-badge i { font-size: 0.9rem; }
 
+/* Vision & Mission */
+.vision-mission .vision-grid {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+.vision-card {
+  flex: 1 1 320px;
+  padding: 1.5rem;
+  border-radius: 12px;
+}
+.vision-icon {
+  font-size: 1.6rem;
+  color: var(--emerald);
+  margin-bottom: 0.5rem;
+}
+.vision-card h3 { margin-top: 0.25rem; margin-bottom: 0.5rem; }
+.vision-card p { line-height: 1.6; color: var(--text-muted); }
+
+/* Why Work With Me */
+.why-me .why-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.why-me .why-card {
+  padding: 1.5rem;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+}
+[data-theme="light"] .why-me .why-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+}
+.why-me .why-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+  border-color: rgba(16, 185, 129, 0.35);
+}
+.why-me .why-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: var(--emerald-soft);
+  color: var(--emerald);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  flex-shrink: 0;
+}
+.why-me .why-card h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.why-me .why-card p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* AI & Productivity Tools */
+.ai-tools .tool-card { padding: 1.25rem; }
+.ai-tools .tool-card .skill-header { margin-bottom: 0; }
+.ai-tools .tool-card .skill-header strong { display: none; }
+.ai-tools .tool-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+/* Professional Highlights */
+.highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+.highlight-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.25rem 1.35rem;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+}
+.highlight-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+  border-color: rgba(16, 185, 129, 0.3);
+}
+.highlight-card i {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: var(--emerald-soft);
+  color: var(--emerald);
+  font-size: 1rem;
+}
+.highlight-card span {
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--text);
+}
+
 /* Skills */
 .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem; }
 .skill-card { padding: 1.25rem; border-radius: var(--radius-sm); }
@@ -524,6 +638,7 @@ a { color: inherit; text-decoration: none; }
   .about-counters { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
+  .why-me .why-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 768px) {
   .nav-toggle { display: flex; }
@@ -543,86 +658,7 @@ a { color: inherit; text-decoration: none; }
   .hero-buttons { flex-direction: column; }
   .hero-buttons .btn { width: 100%; justify-content: center; }
   .skills-grid { grid-template-columns: 1fr; }
-}
-
-/* Vision & Mission styles */
-.vision-mission .vision-grid{
-  display:flex;
-  gap:1.5rem;
-  flex-wrap:wrap;
-  margin-top:1.5rem;
-}
-.vision-card{
-  flex:1 1 320px;
-  padding:1.5rem;
-  border-radius:12px;
-}
-.vision-icon{
-  font-size:1.6rem;
-  color:var(--emerald);
-  margin-bottom:0.5rem;
-}
-.vision-card h3{margin-top:0.25rem;margin-bottom:0.5rem}
-.vision-card p{line-height:1.6;color:var(--text-muted)}
-
-/* Why Work With Me */
-.why-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 1.25rem;
-}
-.why-card {
-  padding: 1.5rem; border-radius: var(--radius-sm);
-  transition: var(--transition);
-}
-.why-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow);
-  border-color: rgba(16, 185, 129, 0.3);
-}
-.why-icon {
-  width: 48px; height: 48px; border-radius: 12px;
-  background: var(--emerald-soft); color: var(--emerald);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.25rem; margin-bottom: 1rem;
-}
-.why-card h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem; }
-.why-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.55; }
-
-/* AI & Productivity Tools */
-.ai-tools .tool-card { padding: 1.25rem; }
-.ai-tools .tool-card .skill-header { margin-bottom: 0; }
-.ai-tools .tool-card .skill-header strong { display: none; }
-.ai-tools .tool-card:hover {
-  transform: translateY(-3px);
-  border-color: rgba(16, 185, 129, 0.3);
-}
-
-/* Professional Highlights */
-.highlights-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.25rem;
-}
-.highlight-card {
-  display: flex; align-items: flex-start; gap: 1rem;
-  padding: 1.25rem 1.35rem; border-radius: var(--radius-sm);
-  transition: var(--transition);
-}
-.highlight-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow);
-  border-color: rgba(16, 185, 129, 0.3);
-}
-.highlight-card i {
-  flex-shrink: 0; width: 40px; height: 40px;
-  display: flex; align-items: center; justify-content: center;
-  border-radius: 10px; background: var(--emerald-soft);
-  color: var(--emerald); font-size: 1rem;
-}
-.highlight-card span {
-  font-size: 0.95rem; font-weight: 500; line-height: 1.45;
-  color: var(--text);
+  .why-me .why-grid { grid-template-columns: 1fr; }
 }
 
 /* Certifications — horizontal row (matches Portfolio Showcase) */
