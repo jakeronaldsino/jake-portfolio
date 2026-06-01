@@ -94,7 +94,7 @@
   }
 
   // ========== Active nav ==========
-  var sectionIds = ['hero', 'about', 'vision-mission', 'skills', 'services', 'experience', 'portfolio', 'testimonials', 'contact'];
+  var sectionIds = ['hero', 'about', 'vision-mission', 'why-me', 'skills', 'ai-tools', 'services', 'experience', 'certifications', 'portfolio', 'highlights', 'contact'];
   var navAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
 
   function setActiveNav() {
@@ -163,7 +163,7 @@
   }
 
   // ========== Skill progress bars ==========
-  var skillCards = document.querySelectorAll('.skill-card');
+  var skillCards = document.querySelectorAll('.skill-card[data-percent]');
   if ('IntersectionObserver' in window) {
     var skillObs = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
@@ -178,51 +178,6 @@
     }, { threshold: 0.3 });
     skillCards.forEach(function (card) { skillObs.observe(card); });
   }
-
-  // ========== Testimonial slider ==========
-  var testimonialCards = document.querySelectorAll('.testimonial-card');
-  var testimonialPrev = document.getElementById('testimonialPrev');
-  var testimonialNext = document.getElementById('testimonialNext');
-  var testimonialDots = document.getElementById('testimonialDots');
-  var testimonialIndex = 0;
-  var testimonialTimer;
-
-  function showTestimonial(index) {
-    if (!testimonialCards.length) return;
-    testimonialIndex = (index + testimonialCards.length) % testimonialCards.length;
-    testimonialCards.forEach(function (card, i) {
-      card.classList.toggle('active', i === testimonialIndex);
-    });
-    if (testimonialDots) {
-      testimonialDots.querySelectorAll('button').forEach(function (dot, i) {
-        dot.classList.toggle('active', i === testimonialIndex);
-      });
-    }
-  }
-
-  if (testimonialDots && testimonialCards.length) {
-    testimonialCards.forEach(function (_, i) {
-      var dot = document.createElement('button');
-      dot.setAttribute('aria-label', 'Go to review ' + (i + 1));
-      if (i === 0) dot.classList.add('active');
-      dot.addEventListener('click', function () {
-        showTestimonial(i);
-        resetTestimonialTimer();
-      });
-      testimonialDots.appendChild(dot);
-    });
-  }
-
-  function resetTestimonialTimer() {
-    clearInterval(testimonialTimer);
-    testimonialTimer = setInterval(function () {
-      showTestimonial(testimonialIndex + 1);
-    }, 6000);
-  }
-
-  if (testimonialPrev) testimonialPrev.addEventListener('click', function () { showTestimonial(testimonialIndex - 1); resetTestimonialTimer(); });
-  if (testimonialNext) testimonialNext.addEventListener('click', function () { showTestimonial(testimonialIndex + 1); resetTestimonialTimer(); });
-  if (testimonialCards.length) resetTestimonialTimer();
 
   // ========== Contact form ==========
   var contactForm = document.getElementById('contactForm');
@@ -259,6 +214,15 @@
     leadgen: 'Lead Generation Campaigns',
     productlisting: 'Shopify Product Listings',
     dataentry: 'Data Entry Projects'
+  };
+
+  var CERT_IMAGES = {
+    gva: ['images/certifications/gva-apprenticeship.png'],
+    'gva-cert': ['images/certifications/gva-certification.png'],
+    admin: ['images/certifications/admin-support.png'],
+    leadgen: ['images/certifications/lead-generation.png'],
+    social: ['images/certifications/social-media.png'],
+    bsit: ['images/certifications/bsit-diploma.png']
   };
 
   var sampleModal = document.getElementById('sampleModal');
@@ -341,6 +305,50 @@
         e.preventDefault();
         var type = card.getAttribute('data-sample-type');
         if (type) openModal(type);
+      }
+    });
+  });
+
+  function initCertPreviews() {
+    document.querySelectorAll('.cert-preview').forEach(function (preview) {
+      var img = preview.querySelector('img');
+      if (!img) return;
+      function markLoaded() {
+        preview.classList.add('has-image');
+      }
+      if (img.complete && img.naturalWidth > 0) {
+        markLoaded();
+      } else {
+        img.addEventListener('load', markLoaded);
+        img.addEventListener('error', function () {
+          preview.classList.remove('has-image');
+        });
+      }
+    });
+  }
+  initCertPreviews();
+
+  function openCertModal(card) {
+    var type = card.getAttribute('data-cert-type');
+    var titleEl = card.querySelector('.cert-body h3');
+    var title = titleEl ? titleEl.textContent.trim() : 'Certification';
+    var preview = card.querySelector('.cert-preview');
+    var paths = CERT_IMAGES[type];
+    if (!preview || !preview.classList.contains('has-image')) return;
+    if (paths && paths.length) {
+      openGalleryModal(title, paths);
+      return;
+    }
+    var img = preview.querySelector('img');
+    if (img) openGalleryModal(title, [img.src]);
+  }
+
+  document.querySelectorAll('.cert-card[data-cert-type]').forEach(function (card) {
+    card.addEventListener('click', function () { openCertModal(card); });
+    card.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openCertModal(card);
       }
     });
   });
