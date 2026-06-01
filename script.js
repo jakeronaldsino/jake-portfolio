@@ -25,7 +25,7 @@
 
   // ========== Footer year ==========
   var yearEl = document.getElementById('year');
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
+  if (yearEl) yearEl.textContent = '2019';
 
   // ========== Dark mode toggle ==========
   var themeToggle = document.getElementById('themeToggle');
