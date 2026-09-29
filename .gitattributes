@@ -1,0 +1,7 @@
+# Keep binary assets byte-for-byte (autocrlf is enabled on this machine)
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.mp4 binary
